@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+#newpaste{
+    resize: none;
+}
+
+.list-group{
+  font-size: smaller;;
+}
+#optional b{
+  margin-bottom: 8px;
+  margin-top:7px;
+}
+#optional hr{
+  width:99%;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
