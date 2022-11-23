@@ -1,9 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap-icons/font/bootstrap-icons.css";
+@import "~prismjs/themes/prism.css";
+@import "~prismjs/plugins/toolbar/prism-toolbar.css";
+/* @import "~prismjs/themes/prism-okaidia"; */
+
+
+
+code[class*="language-"],
+pre[class*="language-"] {
+	/* color: black; */
+	/* background: none; */
+	/* text-shadow: 0 1px white; */
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 0.8rem; /* 1em */
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+}
 #newpaste{
     resize: none;
 }
-
 .list-group{
   font-size: smaller;;
 }

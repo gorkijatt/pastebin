@@ -2,23 +2,38 @@
 <div class="row justify-content-md-center">
 
 <div class="col-lg-8">
-   
+  <form #create_paste="ngForm">
+
+  <!-- new paste-->
     <div class="row p-1">
         <label for="newpaste" class="form-label"><b>New Paste</b></label>
-        <textarea class="form-control" id="newpaste" rows="10"></textarea>
+        <textarea name="paste" [(ngModel)]="paste"  class="form-control" id="newpaste" rows="10"></textarea>
     </div>
     
     <div class="row mt-1" id="optional">
         <b>Optional Paste Settings</b>
         <hr>
         <div class="col-lg-8">
-            <form>
+
+              <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-4 col-form-label">Paste Title:</label>
+                <div class="col-sm-6">
+                    <input name="title" [(ngModel)]="paste_title" type="text" class="form-control" id="title" placeholder="Paste Title">
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-4 col-form-label">Password:</label>
+                <div class="col-sm-6">
+                    <input name="password" [(ngModel)]="paste_password" type="password" class="form-control" id="passwords" placeholder="Password">
+                </div>
+              </div>
                 
                 <div class="row mb-3">
                     <label for="inputEmail3" class="col-sm-4 col-form-label">Category:</label>
                     <div class="col-sm-6">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
+                        <select name="category" [(ngModel)]="paste_category" class="form-select" aria-label="Default select example">
+                            <option selected>None</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
                             <option value="3">Three</option>
@@ -29,8 +44,8 @@
                 <div class="row mb-3">
                     <label for="inputEmail3" class="col-sm-4 col-form-label">Syntax Highlighting:</label>
                     <div class="col-sm-6">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
+                        <select name="syntax" [(ngModel)]="paste_syntax" class="form-select" aria-label="Default select example">
+                            <option selected>None</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
                             <option value="3">Three</option>
@@ -39,32 +54,15 @@
                 </div>
                 
                 <div class="row mb-3">
-                    <label for="inputEmail3" class="col-sm-4 col-form-label">Password:</label>
-                    <div class="col-sm-6">
-                        <input type="password" class="form-control" id="passwords" placeholder="password">
-
-                    </div>
-                </div>
-
-               
-                <div class="row mb-3">
-                    <label for="inputEmail3" class="col-sm-4 col-form-label">Paste Title:</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="title" placeholder="Paste Title">
-
-                    </div>
-                </div>
-
-                <div class="row mb-3">
                     <label for="inputEmail3" class="col-sm-4 col-form-label"></label>
                     <div class="col-sm-6">
-                        <input type="button" class="btn btn-primary form-control" id="btn" value="Create New Paste">
-
+                        <input name="submit_btn" (click)="insert_paste(create_paste)" type="submit" class="btn btn-primary form-control" id="btn" value="Create New Paste">
                     </div>
                 </div>
 
+                {{msg}}
 
-            </form>
+
         </div>
         <div class="col-lg-4">
 
@@ -72,13 +70,11 @@
        
     </div>
 
-    <!-- <pre class="row">
-        <code class="language-css line-numbers">{{code}}</code>
-    </pre> -->
-
+  </form>
 
 </div>
 
+<!-- public pastes -->
 <div class="col-lg-4 mt-p1 p-3" style="max-height:500px;overflow:scroll">
     <label for="newpaste" class="form-label"><b>Public Pastes</b></label>
     <div class="list-group">
@@ -250,5 +246,6 @@
       </div>
 </div>
 
+</div>
 </div>
 
