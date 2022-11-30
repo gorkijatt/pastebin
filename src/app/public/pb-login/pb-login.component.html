@@ -10,30 +10,29 @@
          <div class="card mt-3">
       
           <div class="card-body">
-              <form class="col-lg-12">
-                  
+              <form #loginform="ngForm" name="login_form" class="col-lg-12">
 
                   <div class="row mb-3">
                     <label for="inputEmail3" class="col-sm-3 col-form-label">Email Address</label>
                     <div class="col-sm-6">
-                      <input type="email" class="form-control" id="inputEmail3" placeholder="Your Email Address">
+                      <input [(ngModel)]="login_email" name="email" type="email" class="form-control" id="inputEmail3" placeholder="Your Email Address">
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="inputPassword3" class="col-sm-3 col-form-label">Password</label>
                     <div class="col-sm-6">
-                      <input type="password" class="form-control" id="inputPassword3" placeholder="Your Password">
+                      <input [(ngModel)]="login_password" name="password" type="password" class="form-control" id="inputPassword3" placeholder="Your Password">
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="inputPassword3" class="col-sm-3 col-form-label"></label>
                     <div class="col-sm-6">
-                      <button type="submit" class="btn btn-primary">Login</button>
+                      <button (click)="login(loginform)" type="submit" class="btn btn-primary">Login</button>
                     </div>
                   </div>
-                  
+
                 </form>
           </div>
           
@@ -41,174 +40,18 @@
         </div> 
 
         <div class="col-lg-4 mt-p1 p-3" style="max-height:500px;overflow:scroll">
-          <label for="newpaste" class="form-label"><b>Public Pastes</b></label>
-          <div class="list-group">
-              <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+          <label for="newpaste" class="form-label"><b>Public Pastes <i class="fa fa-globe"></i></b></label>
+          <div class="list-group" style="max-height:500px;overflow:scroll">
+            <span *ngFor="let pastes of related_pastes;let i = index">
+              <a routerLink="/paste/{{pastes.url}}" class="list-group-item list-group-item-action" aria-current="true">
                 <div class="d-flex w-100 justify-content-between">
-                  <strong class="mb-1">List group item heading</strong>
-                  <small>3 days ago</small>
+                    <strong class="mb-1">{{ (pastes.title.length > 40) ? (pastes.title | slice:0:40) + '...' : pastes.title }}</strong>
+                    <small>{{pastes.createdAt | dateAgo}}</small>
                 </div>
-                <p class="mb-1">Some placeholder content in a paragraph.</p>
-                <small>And some small print.</small>
+                <p class="mb-1"><i class="fa fa-user-o"> </i> {{pastes.user_name}}</p>
               </a>
-              
-              <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                  <div class="d-flex w-100 justify-content-between">
-                    <strong class="mb-1">List group item heading</strong>
-                    <small>3 days ago</small>
-                  </div>
-                  <p class="mb-1">Some placeholder content in a paragraph.</p>
-                  <small>And some small print.</small>
-                </a>
-      
-                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                  <div class="d-flex w-100 justify-content-between">
-                    <strong class="mb-1">List group item heading</strong>
-                    <small>3 days ago</small>
-                  </div>
-                  <p class="mb-1">Some placeholder content in a paragraph.</p>
-                  <small>And some small print.</small>
-                </a>
-      
-                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                  <div class="d-flex w-100 justify-content-between">
-                    <strong class="mb-1">List group item heading</strong>
-                    <small>3 days ago</small>
-                  </div>
-                  <p class="mb-1">Some placeholder content in a paragraph.</p>
-                  <small>And some small print.</small>
-                </a>
-      
-                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                  <div class="d-flex w-100 justify-content-between">
-                    <strong class="mb-1">List group item heading</strong>
-                    <small>3 days ago</small>
-                  </div>
-                  <p class="mb-1">Some placeholder content in a paragraph.</p>
-                  <small>And some small print.</small>
-                </a>
-      
-                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                  <div class="d-flex w-100 justify-content-between">
-                    <strong class="mb-1">List group item heading</strong>
-                    <small>3 days ago</small>
-                  </div>
-                  <p class="mb-1">Some placeholder content in a paragraph.</p>
-                  <small>And some small print.</small>
-                </a>
-      
-      
-                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                  <div class="d-flex w-100 justify-content-between">
-                    <strong class="mb-1">List group item heading</strong>
-                    <small>3 days ago</small>
-                  </div>
-                  <p class="mb-1">Some placeholder content in a paragraph.</p>
-                  <small>And some small print.</small>
-                </a>
-      
-      
-                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                  <div class="d-flex w-100 justify-content-between">
-                    <strong class="mb-1">List group item heading</strong>
-                    <small>3 days ago</small>
-                  </div>
-                  <p class="mb-1">Some placeholder content in a paragraph.</p>
-                  <small>And some small print.</small>
-                </a>
-      
-      
-                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                  <div class="d-flex w-100 justify-content-between">
-                    <strong class="mb-1">List group item heading</strong>
-                    <small>3 days ago</small>
-                  </div>
-                  <p class="mb-1">Some placeholder content in a paragraph.</p>
-                  <small>And some small print.</small>
-                </a>
-      
-      
-                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                  <div class="d-flex w-100 justify-content-between">
-                    <strong class="mb-1">List group item heading</strong>
-                    <small>3 days ago</small>
-                  </div>
-                  <p class="mb-1">Some placeholder content in a paragraph.</p>
-                  <small>And some small print.</small>
-                </a>
-      
-      
-                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                  <div class="d-flex w-100 justify-content-between">
-                    <strong class="mb-1">List group item heading</strong>
-                    <small>3 days ago</small>
-                  </div>
-                  <p class="mb-1">Some placeholder content in a paragraph.</p>
-                  <small>And some small print.</small>
-                </a>
-      
-                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                  <div class="d-flex w-100 justify-content-between">
-                    <strong class="mb-1">List group item heading</strong>
-                    <small>3 days ago</small>
-                  </div>
-                  <p class="mb-1">Some placeholder content in a paragraph.</p>
-                  <small>And some small print.</small>
-                </a>
-      
-                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                  <div class="d-flex w-100 justify-content-between">
-                    <strong class="mb-1">List group item heading</strong>
-                    <small>3 days ago</small>
-                  </div>
-                  <p class="mb-1">Some placeholder content in a paragraph.</p>
-                  <small>And some small print.</small>
-                </a>
-      
-                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                  <div class="d-flex w-100 justify-content-between">
-                    <strong class="mb-1">List group item heading</strong>
-                    <small>3 days ago</small>
-                  </div>
-                  <p class="mb-1">Some placeholder content in a paragraph.</p>
-                  <small>And some small print.</small>
-                </a>
-      
-                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                  <div class="d-flex w-100 justify-content-between">
-                    <strong class="mb-1">List group item heading</strong>
-                    <small>3 days ago</small>
-                  </div>
-                  <p class="mb-1">Some placeholder content in a paragraph.</p>
-                  <small>And some small print.</small>
-                </a>
-      
-                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                  <div class="d-flex w-100 justify-content-between">
-                    <strong class="mb-1">List group item heading</strong>
-                    <small>3 days ago</small>
-                  </div>
-                  <p class="mb-1">Some placeholder content in a paragraph.</p>
-                  <small>And some small print.</small>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                  <div class="d-flex w-100 justify-content-between">
-                    <strong class="mb-1">List group item heading</strong>
-                    <small>3 days ago</small>
-                  </div>
-                  <p class="mb-1">Some placeholder content in a paragraph.</p>
-                  <small>And some small print.</small>
-                </a>
-      
-                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                  <div class="d-flex w-100 justify-content-between">
-                    <strong class="mb-1">List group item heading</strong>
-                    <small>3 days ago</small>
-                  </div>
-                  <p class="mb-1">Some placeholder content in a paragraph.</p>
-                  <small>And some small print.</small>
-                </a>
-            </div>
+            </span>
+          </div>    
         </div>
         
       </div>
